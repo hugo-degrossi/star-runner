@@ -9,24 +9,23 @@ $dash-space: $dash * ($max - 1) + $dash-gap * $max;
 $time: 10s;
 $time-step: $time/$max;
 
-/* Main styles */
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:800);
-
 .title-text {
-    font-size: 5vmin;
+    font-size: 60px;
 
     fill: color(base,blue);
     stroke-width: 1;
     stroke-linejoin: round;
     stroke-dasharray: $dash $dash-space;
     stroke-dashoffset: 0;
+
     -webkit-animation: stroke $time infinite linear;
     animation: stroke $time infinite linear;
-
+ 
     @for $item from 1 through $max {
         &:nth-child(#{$max}n + #{$item}) {
             $color: nth($colors, $item);
             stroke: $color;
+
             -webkit-animation-delay: -($time-step * $item);
             animation-delay: -($time-step * $item);
         }
@@ -43,4 +42,27 @@ $time-step: $time/$max;
   100% {
     stroke-dashoffset: -($dash + $dash-gap) * $max;
   }
+}
+
+
+.btn {
+  background-color: color(base,blue);
+  border-radius: 40px;
+  font-size: 20px;
+  text-align: center;
+  color: color(base,light-grey);
+  transition: 0.3s;
+  border: 2px solid color(base,night-blue); 
+  position: absolute;
+  bottom: 5vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 7px 20px 10px 20px;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-color: color(base,night-blue);
+  border: 2px solid color(base,pink); 
+  color: color(base,bright-blue);
 }
