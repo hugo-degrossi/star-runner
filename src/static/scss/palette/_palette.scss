@@ -1,0 +1,33 @@
+$palettes: (
+        base: (
+                pink: #D9525E,
+                night-blue: #091333,
+                teal: #2E8C83,
+                dark-grey: #333333,
+                light-grey: #E2E2E2,
+                white: #ffffff,
+                black: #000000,
+        ),
+);
+
+
+@function color($color,$tone){
+
+    @warn map-get($palettes,$color);
+
+    @if map-has-key($palettes,$color){
+        $color: map-get($palettes,$color);
+
+            @if map-has-key($color,$tone){
+                $tone: map-get($color,$tone);
+                @return $tone;
+            }
+
+            @warn "unknown tone `#{$tone}` in color";
+            @return null;        
+    }
+
+    @warn "unknown color `#{$color}` in palette";
+    @return null;
+   
+}

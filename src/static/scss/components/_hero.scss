@@ -1,0 +1,8 @@
+@import "../palette/palette";
+@import "../devices/media_query";
+
+
+#title {
+    color: color(base,pink);
+    font-size: 10vmin;
+}
